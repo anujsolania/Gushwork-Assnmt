@@ -16,6 +16,7 @@ const nextBtn = document.querySelector(".carousel-btn.next");
 const images = thumbs.map((thumb) => thumb.querySelector("img").src);
 let activeIndex = 0;
 
+// Toggle sticky header after the hero section is out of view.
 const onScroll = () => {
   const heroBottom = hero.getBoundingClientRect().bottom;
   if (heroBottom <= 120) {
@@ -25,6 +26,7 @@ const onScroll = () => {
   }
 };
 
+// Sync main image and thumb state for the gallery.
 const setActiveImage = (index) => {
   activeIndex = (index + images.length) % images.length;
   mainImage.src = images[activeIndex];
@@ -33,6 +35,7 @@ const setActiveImage = (index) => {
   });
 };
 
+// Move the zoom lens and update the magnified preview position.
 const moveLens = (event) => {
   const rect = mainImage.getBoundingClientRect();
   const lensSize = zoomLens.offsetWidth / 2;
@@ -69,6 +72,7 @@ const onToggleNav = () => {
   navLinks.classList.toggle("is-open");
 };
 
+// Accordion behavior: keep only one FAQ item open at a time.
 const onAccordionClick = (event) => {
   const button = event.target.closest(".faq-question");
   if (!button) {
@@ -92,6 +96,7 @@ const onAccordionClick = (event) => {
   }
 };
 
+// Scroll the applications rail when the arrow buttons are clicked.
 const onCarouselClick = (event) => {
   const button = event.target.closest("[data-carousel]");
   if (!button) {
